@@ -1,0 +1,2 @@
+saxonche>=12,<14
+requests>=2.31

@@ -1,0 +1,36 @@
+{
+  "invoice_number": "BAD-MAGNITUDE",
+  "issue_date": "2026-03-14",
+  "currency": "EUR",
+  "order_reference": "PO-100",
+  "seller": {
+    "name": "Seller Co",
+    "vat_id": "BE335429909",
+    "address": {
+      "line1": "1 Example St",
+      "city": "City",
+      "postal_code": "1000",
+      "country": "BE"
+    }
+  },
+  "buyer": {
+    "name": "Buyer Co",
+    "vat_id": "BE248226746",
+    "address": {
+      "line1": "1 Example St",
+      "city": "City",
+      "postal_code": "1000",
+      "country": "BE"
+    }
+  },
+  "lines": [
+    {
+      "name": "Service",
+      "quantity": 1,
+      "unit_price": "99999999999999999999999999.99",
+      "unit_code": "EA",
+      "vat_category": "S",
+      "vat_rate": "21"
+    }
+  ]
+}

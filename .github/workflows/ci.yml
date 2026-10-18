@@ -1,0 +1,28 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -t . -v
+      - name: Convert every valid sample invoice and validate against the real EN 16931 rules
+        run: |
+          set -e
+          for f in samples/*.json; do
+            case "$f" in samples/bad_*) continue ;; esac
+            echo "== $f"
+            python -m einvoice convert "$f" --out /tmp/$(basename "$f" .json).xml
+          done
+      - name: Confirm every deliberately-invalid sample is rejected
+        run: |
+          set -e
+          for f in samples/bad_*.json; do
+            if python -m einvoice convert "$f" > /dev/null 2>/tmp/err; then
+              echo "FAIL: $f was accepted but should have been rejected"; cat /tmp/err; exit 1
+            fi
+            echo "== $f correctly rejected"
+          done
