@@ -1,3 +1,4 @@
+![CI](https://github.com/Henrybitrus29/peppol-einvoice/actions/workflows/ci.yml/badge.svg)
 # ERP invoice to UBL/EN16931 (Peppol e-invoicing)
 
 Converts a plain ERP-style invoice (parties, lines, VAT, totals as a dict/JSON) into a UBL 2.1 Invoice or
